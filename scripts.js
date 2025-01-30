@@ -1,3 +1,18 @@
+function getRandomColor() {
+    return `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+}
+
+function changeLetterColors() {
+    const title = document.getElementById("jokempo");
+    const letters = title.innerText.split("");
+    title.innerHTML = letters.map(letter => 
+        `<span style="color:${getRandomColor()}">${letter}</span>`
+    ).join("");
+}
+
+setInterval(changeLetterColors, 500);
+    
+
 const result = document.querySelector('.result');
 const humanScore = document.querySelector('#human-score');
 const machineScore = document.querySelector('#machine-score');
@@ -13,16 +28,17 @@ const choices = {
 };
 
 const playHuman = (humanChoice) => {
+    // Exibir uma animação rápida de escolha da máquina
     let count = 0;
     const interval = setInterval(() => {
         const randomChoice = playMachine();
         machineChoiceImage.src = choices[randomChoice];
         count++;
-        if (count === 5) { // Exibir animação de 5 trocas (~5s)
+        if (count === 1) {  // Apenas uma troca para animação rápida
             clearInterval(interval);
             playTheGame(humanChoice, randomChoice);
         }
-    }, 500);
+    }, 200); // Diminui o tempo da animação para maior fluidez
 };
 
 const playMachine = () => {
@@ -36,7 +52,7 @@ const playTheGame = (human, machine) => {
     machineChoiceImage.src = choices[machine];
 
     if (human === machine) {
-        result.innerHTML = `Deu Empate! Ambos escolheram ${human}.`;
+        result.innerHTML = `Deu Empate! Ambos escolheram ${translateChoice(human)}.`;
     } else if (
         (human === 'paper' && machine === 'rock') ||
         (human === 'rock' && machine === 'scissors') ||
@@ -44,16 +60,19 @@ const playTheGame = (human, machine) => {
     ) {
         humanScoreNumber++;
         humanScore.innerHTML = humanScoreNumber;
-        result.innerHTML = `🎉 Você Ganhou! Você escolheu ${human} e a máquina escolheu ${machine}.`;
+        result.innerHTML = `🎉 Você Ganhou! Você escolheu ${translateChoice(human)} e a máquina escolheu ${translateChoice(machine)}.`;
     } else {
         machineScoreNumber++;
         machineScore.innerHTML = machineScoreNumber;
-        result.innerHTML = `💀 Você Perdeu! Você escolheu ${human} e a máquina escolheu ${machine}.`;
+        result.innerHTML = `💀 Você Perdeu! Você escolheu ${translateChoice(human)} e a máquina escolheu ${translateChoice(machine)}.`;
     }
+};
 
-    // Adiciona efeito de piscar na tela
-    result.classList.add("blink");
-    setTimeout(() => {
-        result.classList.remove("blink");
-    }, 2000);
+const translateChoice = (choice) => {
+    switch (choice) {
+        case 'rock': return 'Pedra';
+        case 'paper': return 'Papel';
+        case 'scissors': return 'Tesoura';
+        default: return choice;
+    }
 };

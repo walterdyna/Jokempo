@@ -82,14 +82,12 @@ p {
     color: #f95808;
 }
 
+/* Link ajustado para ficar à esquerda */
 a {
-    position: fixed;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
@@ -107,4 +105,61 @@ a:hover {
 @keyframes blink-animation {
     0% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+/* Barra de Rodapé ajustada para ficar à esquerda */
+.footer {
+    display: flex;
+    justify-content: flex-start; /* Alterado para alinhamento à esquerda */
+    align-items: center;
+    gap: 15px;
+    bottom: 0;
+    left: 10px; /* Ajustado para alinhamento à esquerda */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Estilo dos links da barra de rodapé */
+.footer a {
+    color: white;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #f1c40f;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .footer a {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .image {
+        width: 120px;
+        height: 120px;
+    }
+
+    button {
+        font-size: 60px;
+    }
+
+    .buttons {
+        gap: 20px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    /* Alinha o link "Conheça o jogo e sua história" à esquerda */
+    a {
+        left: 10px; /* Ajustado para a esquerda */
+    }
 }
