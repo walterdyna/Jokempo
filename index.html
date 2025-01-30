@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>JOKEMPO</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>JOKEMPO</h1>
+
+        <!-- Imagem da jogada da máquina -->
+         <h2>A Amaquina escolheu!:</h2>
+        <img id="machine-choice" class="image" src="images/rock.png" alt="Escolha da Máquina">
+
+        <div class="buttons">
+            <button id="rock" onclick="playHuman('rock')">&#x1F44A;</button>
+            <button id="paper" onclick="playHuman('paper')">&#x1f590;</button>
+            <button id="scissors" onclick="playHuman('scissors')">&#x270c;</button>
+        </div>
+
+        <p class="result"></p>
+
+        <p class="you-score">Sua Pontuação: <span id="human-score">0</span></p>
+        <p class="machine-score">Pontuação da IA: <span id="machine-score">0</span></p>
+    </div>
+
+    <a id="jokempo" href="https://pt.wikipedia.org/wiki/Pedra,_papel_e_tesoura">Conheça o jogo e sua história</a>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
